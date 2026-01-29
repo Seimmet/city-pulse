@@ -33,6 +33,10 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
 
+app.get("/", (_req, res) => {
+  res.json({ message: "City Pulse API is running" });
+});
+
 app.use("/auth", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/publisher", publisherRoutes);
