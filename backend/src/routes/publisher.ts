@@ -24,7 +24,7 @@ const storage = new CloudinaryStorage({
     folder: 'city-pulse-editions',
     resource_type: 'auto',
     allowed_formats: ['jpg', 'png', 'pdf'],
-    public_id: (req, file) => {
+    public_id: (req: Express.Request, file: Express.Multer.File) => {
       const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
       return file.fieldname + "-" + uniqueSuffix;
     }

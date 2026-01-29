@@ -82,7 +82,7 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
     const status = subscription.status;
     const subscriptionId = subscription.id;
-    const currentPeriodEnd = subscription.current_period_end;
+    const currentPeriodEnd = (subscription as any).current_period_end;
     
     try {
         await pool.query(

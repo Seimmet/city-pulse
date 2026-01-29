@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { z } from "zod";
 import { query } from "../db/pool";
-import { authenticateToken } from "../middleware/auth";
+import { requireRole } from "../middleware/rbac";
 
 const router = Router();
 
@@ -14,7 +14,7 @@ const SubscriptionSchema = z.object({
 });
 
 // Subscribe to push notifications
-router.post("/subscribe", authenticateToken, async (req, res) => {
+router.post("/subscribe", requireRole("READER"), async (req, res) => {
   const parsed = SubscriptionSchema.safeParse(req.body);
   if (!parsed.success) {
     return res.status(400).json({ error: parsed.error.flatten() });
