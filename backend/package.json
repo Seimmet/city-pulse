@@ -35,5 +35,12 @@
     "@types/web-push": "^3.6.4",
     "tsx": "^4.7.0",
     "typescript": "^5.4.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bcryptjs",
+      "esbuild",
+      "sharp"
+    ]
   }
 }
