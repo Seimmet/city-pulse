@@ -21,6 +21,7 @@ app.use(cors({
 
 // Webhooks must be mounted BEFORE express.json() to access raw body
 app.use("/webhooks", webhookRoutes);
+app.use("/api/webhooks", webhookRoutes);
 
 app.use(express.json());
 
@@ -37,12 +38,16 @@ app.get("/", (_req, res) => {
   res.json({ message: "City Pulse API is running" });
 });
 
-app.use("/auth", authRoutes);
-app.use("/admin", adminRoutes);
-app.use("/publisher", publisherRoutes);
-app.use("/publisher/plans", plansRoutes);
-app.use("/subscriptions", subscriptionRoutes);
-app.use("/notifications", notificationRoutes);
-app.use("/", readerRoutes);
+const apiRouter = express.Router();
+apiRouter.use("/auth", authRoutes);
+apiRouter.use("/admin", adminRoutes);
+apiRouter.use("/publisher", publisherRoutes);
+apiRouter.use("/publisher/plans", plansRoutes);
+apiRouter.use("/subscriptions", subscriptionRoutes);
+apiRouter.use("/notifications", notificationRoutes);
+apiRouter.use("/", readerRoutes);
+
+app.use("/api", apiRouter);
+app.use("/", apiRouter);
 
 export default app;

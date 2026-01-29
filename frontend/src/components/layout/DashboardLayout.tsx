@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { 
   LayoutDashboard, Globe, Users, Building2, Settings, CreditCard, 
   FileText, BarChart3, Bell, Search, ChevronDown, Menu, X, LogOut,
