@@ -2,6 +2,7 @@
   "name": "city-pulse-backend",
   "version": "0.0.1",
   "private": true,
+  "type": "commonjs",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node dist/server.js",
